@@ -1,0 +1,6 @@
+import './globals.css';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import ThemeButton from './ThemeButton';
+export const metadata: Metadata = { title: 'Stillwater — Gospel Study', description: 'An independent scripture study companion.' };
+export default function RootLayout({children}:{children:React.ReactNode}) { return <html lang="en"><body><div className="shell"><aside className="sidebar"><Link className="brand" href="/"><span className="brandmark">✳</span><span>stillwater<small>GOSPEL STUDY</small></span></Link><nav><div className="navlabel">STUDY</div><Link href="/">⌂ <span>Discover</span></Link><Link href="/library">▤ <span>Scripture library</span></Link><Link href="/conference">◷ <span>General Conference</span></Link><Link href="/builder">◇ <span>Lesson &amp; Talk Builder</span></Link><Link href="/saved">♡ <span>Saved studies</span></Link></nav><div className="sidebottom"><div className="notice">Independent study tool<br/><small>Not affiliated with or endorsed by the Church of Jesus Christ of Latter-day Saints.</small></div><ThemeButton/></div></aside><main className="main">{children}<footer>Stillwater is an independent, unofficial study tool. Scripture text provided via Open Scripture API. Always consult original sources.</footer></main></div></body></html> }

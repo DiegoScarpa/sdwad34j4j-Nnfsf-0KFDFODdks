@@ -1,0 +1,3 @@
+import {NextResponse} from 'next/server';
+const BASE='https://openscriptureapi.org/api/conference/v1/lds/en';
+export async function GET(req:Request){const u=new URL(req.url);const limit=Math.max(1,Math.min(100,Number(u.searchParams.get('limit')||50)));const offset=Math.max(0,Number(u.searchParams.get('offset')||0));try{const r=await fetch(`${BASE}/conferences?limit=${limit}&offset=${offset}`,{next:{revalidate:3600},signal:AbortSignal.timeout(12000)});if(!r.ok)return NextResponse.json({error:`Conference API returned ${r.status}`},{status:r.status});return NextResponse.json(await r.json())}catch{return NextResponse.json({error:'Conference source is temporarily unavailable.'},{status:502})}}
